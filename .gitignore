@@ -1,0 +1,13 @@
+# sensitive
+google.json
+
+# Terraform
+.terraform
+terraform.tfstate*
+terraform.tfvars
+
+# NPM
+node_modules
+
+# Wireguard configuration
+wireguard/*.conf

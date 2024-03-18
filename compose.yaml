@@ -1,0 +1,32 @@
+networks:
+  private_network:
+    ipam:
+      driver: default
+      config:
+        - subnet: $NETWORK_CIDR
+
+services:
+  wireguard:
+    container_name: wireguard
+    image: linuxserver/wireguard
+    restart: unless-stopped
+    networks:
+      private_network:
+        ipv4_address: 10.2.0.3
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - SERVERPORT=51820
+      - PEERS=2
+      - PEERDNS=10.2.0.200
+      - INTERNAL_SUBNET=10.2.0.0
+      - ALLOWEDIPS=10.2.0.0/24
+
+    volumes:
+      - ./wireguard:/config
+      - /lib/modules:/lib/modules
+    ports:
+      - "51820:51820/udp"
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1

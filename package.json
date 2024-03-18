@@ -1,0 +1,9 @@
+{
+  "name": "gce-wireguard-vpn",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "devDependencies": {
+    "prettier": "^2.8.0"
+  }
+}
